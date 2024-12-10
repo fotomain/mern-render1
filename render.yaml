@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: mern-stack-example
+    env: node
+    plan: free
+    buildCommand: cd mern/client && npm install && npm run build && mv dist ../server/public
+    startCommand: cd mern/server && npm install && npm start
+    envVars:
+      - key: ATLAS_URI
+        sync: false
+        generateValue: false
+    healthCheckPath: /
